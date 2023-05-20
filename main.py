@@ -1,11 +1,10 @@
-import firebase_admin
-from firebase_admin import credentials, auth
+from firebase_admin import auth, initialize_app
 from flask import Flask
+from credentials import credentials
 
 app = Flask(__name__)
 
-cred = credentials.Certificate('service_account.json')
-firebase = firebase_admin.initialize_app(cred)
+firebase = initialize_app(credentials)
 
 @app.route("/")
 def hello_world():
